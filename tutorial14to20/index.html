@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VueJS:</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="./style.css">
+    <!-- Installing VUE.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+</head>
+<body>
+    <div id="root1">
+        <h2>Components</h2>
+        <h4>{{title}}</h4>
+        <p>{{greet()}}</p>
+
+        <!-- Components -->
+        <greeting></greeting>
+
+    </div>
+    <div id="root2">
+        <h4>{{title}}</h4>
+        <p>{{greet()}}</p>
+        <p>{{type}}</p>
+        <!-- change title from root1 -->
+        <button v-on:click="change_title">Change VueApp One Title</button>
+
+        <!-- Components -->
+        <greeting></greeting>
+    </div>
+
+    <hr>
+    <div id="root">
+        <!-- Refs -->
+        <h2>Refs</h2>
+        <input type="text" ref="input">
+        <button v-on:click="readRefs">Submit</button>
+        <p>Your input: {{output}}</p>
+
+        <div ref="test">Sup</div>
+    </div>
+    <!-- JS -->
+    <script src="./app.js"></script>
+</body>
+</html> 

@@ -27,6 +27,33 @@ new Vue({
     y: 0,
     a: 10,
     b: 20,
+    not_color: false,
+    color: true,
+    available: false,
+    nearby: false,
+    error: false,
+    success: false,
+    // array of strings
+    characters: ["Mario", "Luigi", "Yoshi", "Bowser"],
+    games: ["Minecraft", "Grand Theft AUto", "Fortnite", "God of War"],
+    // array of objects
+    ninjas: [
+      {
+        name: "Timon",
+        age: 13,
+      },
+      {
+        name: "Simba",
+        age: 10,
+      },
+      {
+        name: "Pumba",
+        age: 15,
+      },
+
+    ],
+    health: 100,
+    ended: false,
   },
   // methods
   methods: {
@@ -63,6 +90,16 @@ new Vue({
     logAge: function () {
       console.log("you've entered your age");
     },
+    punch: function () {
+      this.health -= 10;
+      if (this.health <= 0) {
+        this.ended = true;
+      }
+    },
+    restart: function () {
+      this.health = 100;
+      this.ended = false;
+    },
   },
   computed: {
     addToA: function () {
@@ -70,6 +107,12 @@ new Vue({
     },
     addToB: function () {
       return this.age + this.b;
+    },
+    computedClasses: function () {
+      return {
+        available: this.available,
+        nearby: this.nearby,
+      };
     },
   },
 });

@@ -95,6 +95,81 @@
         <hr>
         <!-- canvas with eventListener(v-on:mousemove)-->
         <div id="canvas" v-on:mousemove="updateXY">{{x}}, {{y}}</div>
+
+        <!-- tutorials: ten to twelve -->
+        <!-- Dynamic Classes -->
+        <h2>Dynamic Classes</h2>
+        <p>Example 1</p>
+        <!-- Binding Classes  -->
+        <div v-bind:class="{red: color}"></div>
+        <div v-bind:class="{red: not_color, blue: color, yellow: color}"></div>
+
+        <div v-on:click="available = !available" v-bind:class="{available: available}">
+        <span>Click me</span>
+        </div>
+
+        <p>Example 2</p>
+        <button v-on:click="nearby = !nearby">Toggle nearby</button>
+        <button v-on:click="available = !available">Toggle available</button>
+        <div v-bind:class="computedClasses"><span>Driver</span></div>
+
+        <hr>
+        <!-- Conditionals(v-if and v-show) -->
+        <h2>Conditionals</h2>
+        <button v-on:click="error =! error">Toggle Error</button>
+        <button v-on:click="success =! success">Toggle Success</button>
+        <!-- v-if -->
+        <h4>v-if</h4>
+        <p v-if="error">Access denied</p>
+        <!-- otherwise if error:false-->
+        <p v-else-if="success">Access granted</p>
+
+        <!-- v-show -->
+        <h4>v-show</h4>
+        <p v-show="error">Access denied</p>
+        <!-- otherwise if error:false-->
+        <p v-show="success">Access granted</p>
+        
+        <hr>
+        <!-- Looping with v-for -->
+        <h2>Looping through lists</h2>
+        <ul>
+            <li v-for="character in characters">{{character}}</li>
+            <li v-for="ninja in ninjas">{{ninja.name}} - {{ninja.age}}</li>
+            <!-- with indexs -->
+            <li v-for="(game, index) in games">{{index}}.{{game}}</li>
+
+            <!-- using templates instead of divs -->
+            <template v-for="(ninja, index) in ninjas">
+                <h5>{{index}}. {{ninja.name}}</h5>
+                <p>{{ninja.age}}</p>
+            </template>
+
+            <!-- loopping through objects -->
+            <template v-for="ninja in ninjas">
+                <!-- get value and key in each properties in the object-->
+                <div v-for="(val, key) in ninja">
+                    <p>{{key}} - {{val}}</p>
+                </div>
+            </template>
+        </ul>
+
+        <!-- BURST BAG GAME -->
+        <!-- BAG img -->
+        <div id="bag" v-bind:class="{burst: ended}">
+
+        </div>
+        <!-- BAG health -->
+        <div id="bag-health">
+            <!-- use data binding to decrease the health of the bag -->
+            <div v-bind:style="{width: health + '%'}"></div>
+        </div>
+
+        <!-- Game controls -->
+        <div id="controls">
+            <button v-on:click="punch" v-show="!ended">Punch</button>
+            <button v-on:click="restart">Restart</button>
+        </div>
     </div>
 
     <!-- JS -->
