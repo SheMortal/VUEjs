@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> VUEjsIntro: Tutorial 1-9</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./styles.css">
+    <!-- Installing VUE.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+
+        <!-- DATA -->
+        <p>Name: {{name}}</p>
+        <p>Job: {{job}}</p>
+        <hr>
+        <!-- METHODS -->
+        <h3>{{greet()}}</h3>
+
+        <!-- function with an argument-->
+        <h3>{{greetings('Afternoon')}}</h3>
+        <hr>
+        <!--DATA binding(v-bind:)-->
+        <span v-bind:title="title_message">Hover over me for a few seconds</span>
+        <p>How to install <a v-bind:href="vue_website" target="_blank">VUEjs</a></p>
+        <p>Storage: <a :href="fb_website" target="_blank">Firebase</a></p>
+        <p v-html="other_website"></p>
+        <input type="text" v-bind:value="company">
+
+        <br><hr>
+        <!-- if statement with data-binding(v-if) -->
+        <span v-if="seen">Now you see..</span>
+        <span v-if="not_seen">and now you don't</span>
+
+        <!-- for statement with data-binding(v-for) -->
+        <ol>
+            <li v-for="todo in mylist">
+                {{todo.text}}
+                {{todo.number}}
+            </li>
+        </ol>
+
+        <hr>
+        <!-- on click with data-binding(v-on:click) -->
+        <p>{{reverse_message}}</p>
+        <button v-on:click="reverseMessage">Reverse Message</button>
+
+        <hr>
+        <!-- Events with onclick -->
+        <p>{{my_age()}}</p>
+        <button v-on:click="age++">Add a year</button>
+        <button @click="age--">Remove a year</button>
+        <!-- events with double click(v-on:dblclick)-->
+        <button @dblclick="add(10)">Add 10 years</button>
+        <button v-on:dblclick="subtract(20)">Remove 20 years</button>
+
+        <!-- Event Modifiers (click.once)-->
+        <button v-on:click.once="add(100)">Add 100 years once</button>
+        <!--preventing default behavior of links with event modifier(click.prevent)-->
+        <a v-on:click.prevent="disable_links" href="https://vuejs.org/v2/guide/index.html">VUEjs(disabled link)</a>
+
+        <hr>
+        <!-- Two way data-binding(v-model)-->
+        <p>{{two_way_binding}}</p>
+        <input v-model="two_way_binding">
+        <br>
+        <label>Name:</label>
+        <span>{{name}}</span>
+        <input v-model="name">
+        <label>Age:</label>
+        <span>{{age}}</span>
+        <input v-model="age">
+        
+        <hr>
+        <!-- Keyboard event modifiers -->
+        <label>Name:</label>
+        <!-- keyup.enter -->
+        <input type="text" v-on:keyup.enter="logName">
+        <label>Age:</label>
+        <!-- keyup.alt.enter -->
+        <input type="text" v-on:keyup.alt.enter="logAge">
+
+        <hr>
+        <!-- Computed properties -->
+        <p>A - {{a}}</p>
+        <p>B - {{b}}</p>
+        <button v-on:click="a++">Add to A</button>
+        <button v-on:click="b++">Add to B</button>
+        <p>Age + A = {{addToA}}</p>
+        <p>Age + B = {{addToB}}</p>
+
+        <hr>
+        <!-- canvas with eventListener(v-on:mousemove)-->
+        <div id="canvas" v-on:mousemove="updateXY">{{x}}, {{y}}</div>
+    </div>
+
+    <!-- JS -->
+    <script src="./app.js"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+#canvas{
+    width: 300px;
+    padding: 100px 20px;
+    text-align: center;
+    border: 2px solid #333;
+    background-color: cadetblue;
+}
