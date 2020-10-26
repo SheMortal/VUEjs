@@ -2,10 +2,13 @@
   <div id="app">
     <!-- <h3>{{title}}</h3>
     <ninjas></ninjas> -->
-    <vueHeader v-bind:title="title"></vueHeader>
+
+
+    <!-- listen to events defined in child components(v-on:eventName="rootFunction($eventData)") -->
+    <vueHeader v-bind:title="title" v-on:changedTitle="updateTitle($event)"></vueHeader>
     <!-- props using v-bind -->
     <vueContent v-bind:games="games" ></vueContent>
-   
+    
     <vueFooter v-bind:title="title"></vueFooter>
   </div>
 </template>
@@ -41,7 +44,9 @@ export default {
     }
   },
   methods: {
-
+    updateTitle: function(updatedTitle){
+      this.title = updatedTitle
+    }
   }
 }
 </script>

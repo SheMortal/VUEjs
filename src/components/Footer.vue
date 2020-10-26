@@ -6,6 +6,9 @@
 </template>
 
 <script>
+// using bus events
+import {bus} from "../main";
+
 export default {
     props: {
         title: {
@@ -21,6 +24,12 @@ export default {
   },
   methods: {
 
+  },
+//   use life-cycle hook to listen to the bus event
+  created(){
+      bus.$on('changedChanged', (data)=>{
+          this.title = data;
+      })
   }
 }
 </script>

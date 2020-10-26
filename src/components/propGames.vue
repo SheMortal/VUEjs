@@ -27,7 +27,9 @@ export default {
       deleteGame: function(){
           this.games.pop()
       }
-  }
+  },
+//   lifecylce hooks
+    before
 }
 </script>
 

@@ -6,6 +6,8 @@ import App from "./App.vue";
 // import Ninjas from "./Ninjas.vue";
 // Vue.component("ninjas", Ninjas);
 
+// creating an event bus- vue instance
+export const bus = new Vue();
 
 new Vue({
   el: "#app",
