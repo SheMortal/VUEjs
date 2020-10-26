@@ -2,9 +2,11 @@
   <div id="app">
     <!-- <h3>{{title}}</h3>
     <ninjas></ninjas> -->
-    <vueHeader></vueHeader>
-    <vueContent></vueContent>
-    <vueFooter></vueFooter>
+    <vueHeader v-bind:title="title"></vueHeader>
+    <!-- props using v-bind -->
+    <vueContent v-bind:games="games" ></vueContent>
+   
+    <vueFooter v-bind:title="title"></vueFooter>
   </div>
 </template>
 
@@ -14,7 +16,7 @@
 import Ninjas from "./Ninjas";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Games from "./components/Games";
+import Games from "./components/propGames";
 
 export default {
   components:{
@@ -26,7 +28,7 @@ export default {
   },
   data () {
     return {
-      title: "NinjaApp",
+      title: "Vue Games",
       // using props
       games: [
           {name: 'Minecraft', year: '2000', show: false},

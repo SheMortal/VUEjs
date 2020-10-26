@@ -6,18 +6,27 @@
               <h3 v-show="game.show">Year released: {{game.year}}</h3>
           </li>
       </ul>
+      <button v-on:click="deleteGame">Delete Game</button>
   </div>
 </template>
 
 <script>
 export default {
+    // using props
+    props:["games"],
+    // using validation(check if it's an array)
+    // props: {
+    //      games:{type: Array, required: true}
+    // } if object is not type array, it will return an error in the console
   data () {
     return {
       
     }
   },
   methods: {
-
+      deleteGame: function(){
+          this.games.pop()
+      }
   }
 }
 </script>
