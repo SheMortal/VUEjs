@@ -1,5 +1,6 @@
 import Vue from "vue";
-import App from "./Apps.vue";
+import App from "./Blog.vue";
+// import App from "./Apps.vue";
 // import App from "./App.vue";
 
 // registering a component globally
