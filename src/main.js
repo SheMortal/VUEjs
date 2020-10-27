@@ -8,6 +8,32 @@ import VueResource from "vue-resource";
 Vue.use(VueResource);
 
 
+// using cutom directives(rainbow)
+// globally
+Vue.directive('rainbow',{
+  bind(el, binding, vnode){
+    // random colors(6 digit hex color num)
+    el.style.color = "#" + Math.random().toString().slice(2,8);
+  }
+});
+
+Vue.directive('theme', {
+  bind(el, binding, vnode){
+
+    // checks the value property on the binding
+    if (binding.value == 'wide'){
+      el.style.maxWidth = '1200px';
+    } else if (binding.valie == "narrow"){
+      el.style.maxWidth = '560px';
+    }
+
+    if(binding.arg == 'column'){
+      el.style.background = "#ddd",
+      el.style.padding = '20px'
+    }
+  }
+})
+
 // registering a component globally
 // Vue.component("nameOfComp", importedExport)
 // import Ninjas from "./Ninjas.vue";
