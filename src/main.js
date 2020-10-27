@@ -3,6 +3,11 @@ import App from "./Blog.vue";
 // import App from "./Apps.vue";
 // import App from "./App.vue";
 
+// using vue-resource
+import VueResource from "vue-resource";
+Vue.use(VueResource);
+
+
 // registering a component globally
 // Vue.component("nameOfComp", importedExport)
 // import Ninjas from "./Ninjas.vue";

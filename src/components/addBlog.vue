@@ -1,7 +1,7 @@
 <template>
     <div id="add-blog">
         <h2>Add a new blog post</h2>
-        <form>
+        <form v-if="!submitted">
             <label>Blog Post</label>
             <input type="text" v-model.lazy="blog.title" required>
             <label>Blog Content:</label>
@@ -15,12 +15,20 @@
                 <input type="checkbox" value="cheese" v-model="blog.categories">
                 <label>Wizards</label>
                 <input type="checkbox" value="wizards" v-model="blog.categories">
+                <br>
                 <label>Author:</label>
-                <select>
-                    <option >1</option>
+                <!-- binding select boxes -->
+                <select v-model="blog.author">
+                    <option v-for="author in authors" :key="author">{{author}}</option>
                 </select>
             </div>
+
+            <!-- using vue-resource(storing in a database) -->
+            <button v-on:click.prevent='post'>Add Blog</button>
         </form>
+        <div v-if="submitted">
+            <h3>Thank you for adding your post</h3>
+        </div>
         <div id="preview">
             <h3>Preview Blog</h3>
             <p>Blog title: {{blog.title}}</p>
@@ -30,6 +38,7 @@
             <ul>
                 <li v-for="category in blog.categories" :key="category">{{category}}</li>
             </ul>
+            <p>Author: {{blog.author}}</p>
         </div>
     </div>
 </template>
@@ -47,11 +56,24 @@ export default {
                 content: '',
                 categories:[],
                 author: ''
-            }
+            },
+            authors: ['Sam', 'Cahill', 'Caleb'],
+            submitted: false 
             
         }
     },
     methods: {
+        // using http(vue-resource)
+        post: function(){
+            // this.$http.type-of-request('to-databses-setUp'), {object of what you want to send}
+            this.$http.post("https://jsonplaceholder.typicode.com/posts",{
+                title: this.blog.title,
+                body: this.blog.title,                userId: 1
+            }).then(function(data){
+                console.log(data);
+                this.submitted = true;
+            });
+        }
         
     }
 }
