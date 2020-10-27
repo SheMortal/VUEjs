@@ -21,7 +21,7 @@ export default {
     data () {
         return {
             blogs: [],
-            search: ''
+            search: '',
         }
     },
     methods: {
@@ -41,6 +41,24 @@ export default {
             return this.blogs.filter((blog)=>{
                 return blog.title.match(this.search);
             })
+        }
+    },
+    // registering filters locally
+    filters: {
+        'to-lowercase': function(value){
+            return value.toLowerCase();
+        },
+        // toUppercase(value){
+        //     return value.toUppercase();
+        // }
+    },
+    // registering directives locally
+    directives:{
+        'rainbow': {
+            bind(el, binding, vnode){
+                // random colors(6 digit hex color num)
+                el.style.color = "#" + Math.random().toString().slice(2,8);
+            }
         }
     }
 }

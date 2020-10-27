@@ -8,15 +8,8 @@ import VueResource from "vue-resource";
 Vue.use(VueResource);
 
 
-// using cutom directives
+// using custom directives
 // globally
-Vue.directive('rainbow',{
-  bind(el, binding, vnode){
-    // random colors(6 digit hex color num)
-    el.style.color = "#" + Math.random().toString().slice(2,8);
-  }
-});
-
 Vue.directive('theme', {
   bind(el, binding, vnode){
 
