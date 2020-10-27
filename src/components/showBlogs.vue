@@ -28,7 +28,7 @@ export default {
     methods: {
         
     },
-    // get-requests withy life-cycle hooks
+    // get-requests with life-cycle hooks
     created(){
         this.$http.get("https://jsonplaceholder.typicode.com/posts").then(function(data){
             // take the first 10

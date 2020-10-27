@@ -13,7 +13,11 @@ import Routes from "./routes";
 Vue.use(VueRouter);
 // create a router instance to register routes in routes.js
 const router = new VueRouter({
-    routes: Routes
+    routes: Routes,
+    // history routing
+    mode: 'history'
+    // hash routing
+    // mode: 'hash'
 })
 
 // using custom directives
