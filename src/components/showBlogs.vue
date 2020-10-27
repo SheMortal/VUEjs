@@ -2,11 +2,13 @@
     <!-- using directives with binding -->
     <div v-theme:column="'narrow'" id="show-blogs">
         <h1>All Blog Articles</h1>
-        <div v-for="blog in blogs" :key="blog" class="single-blog">
+        <input type="text" v-model="search" placeholder="search blogs">
+        <div v-for="blog in filteredBlogs" :key="blog" class="single-blog">
 
             <!-- using directives(rainbow) -->
-            <h2 v-rainbow>{{blog.title}}</h2>
-            <article>{{blog.body}}</article>
+            <!-- using filers (| filter-name) -->
+            <h2 v-rainbow>{{blog.title | to-uppercase}}</h2>
+            <article>{{blog.body | snippet}}</article>
         </div>
     </div>
 </template>
@@ -18,7 +20,8 @@ export default {
     },
     data () {
         return {
-            blogs: []
+            blogs: [],
+            search: ''
         }
     },
     methods: {
@@ -30,6 +33,15 @@ export default {
             // take the first 10
             this.blogs = data.body.slice(0,10);
         })
+    },
+
+    // custom search filter
+    computed:{
+        filteredBlogs: function(){
+            return this.blogs.filter((blog)=>{
+                return blog.title.match(this.search);
+            })
+        }
     }
 }
 </script>

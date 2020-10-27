@@ -8,7 +8,7 @@ import VueResource from "vue-resource";
 Vue.use(VueResource);
 
 
-// using cutom directives(rainbow)
+// using cutom directives
 // globally
 Vue.directive('rainbow',{
   bind(el, binding, vnode){
@@ -32,6 +32,15 @@ Vue.directive('theme', {
       el.style.padding = '20px'
     }
   }
+})
+
+// using filers
+Vue.filter('to-uppercase', function(value){
+    return value.toUpperCase();
+});
+// shortening characters
+Vue.filter('snippet', function(value){
+  return value.slice(0,100)+'...';
 })
 
 // registering a component globally
