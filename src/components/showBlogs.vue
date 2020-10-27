@@ -7,7 +7,10 @@
 
             <!-- using directives(rainbow) -->
             <!-- using filers (| filter-name) -->
-            <h2 v-rainbow>{{blog.title | to-uppercase}}</h2>
+            <!-- <h2 v-rainbow>{{blog.title | to-uppercase}}</h2> -->
+
+            <!-- using routes -->
+            <router-link v-bind:to="'/blog/'+ blog.id"><h2>{{blog.title | to-uppercase}}</h2></router-link>
             <article>{{blog.body | snippet}}</article>
         </div>
     </div>
@@ -66,7 +69,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 #show-blog{
     max-width: 800px;
     margin: 0 auto;
