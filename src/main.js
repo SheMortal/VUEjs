@@ -7,6 +7,14 @@ import App from "./Blog.vue";
 import VueResource from "vue-resource";
 Vue.use(VueResource);
 
+// using routers
+import VueRouter from "vue-router";
+import Routes from "./routes";
+Vue.use(VueRouter);
+// create a router instance to register routes in routes.js
+const router = new VueRouter({
+    routes: Routes
+})
 
 // using custom directives
 // globally
@@ -46,5 +54,7 @@ Vue.filter('snippet', function(value){
 
 new Vue({
   el: "#app",
-  render: h => h(App)
+  render: h => h(App),
+  // using routes
+  router: router
 });
