@@ -66,10 +66,7 @@ export default {
         // using http(vue-resource)
         post: function(){
             // this.$http.type-of-request('to-databses-setUp'), {object of what you want to send}
-            this.$http.post("https://jsonplaceholder.typicode.com/posts",{
-                title: this.blog.title,
-                body: this.blog.title,                userId: 1
-            }).then(function(data){
+            this.$http.post("https://blog-vue2020.firebaseio.com/posts.json", this.blog).then(function(data){
                 console.log(data);
                 this.submitted = true;
             });
